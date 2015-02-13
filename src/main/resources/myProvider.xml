@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans        
+					    http://www.springframework.org/schema/beans/spring-beans.xsd        
+					    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+					    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="provider-of-dubbo-app"  />
+	
+	<dubbo:registry id="test" protocol="zookeeper" address="hadoop-004:2181,hadoop-005:2181,hadoop-006:2181" />
+	<bean id="demoService" class="com.gt.du.DubboDemoServiceImpl"></bean>
+	<dubbo:service interface="com.gt.du.inter.dubbointerface.DubboDemoInterface" ref="demoService" />
+<!-- 	
+	<dubbo:service interface="com.gt.provider.myinterface.MyIntergace" class="com.gt.du.MyProviderServiceImpl" />
+ -->	
+	
+	
+	
+</beans> 
